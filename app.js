@@ -35,8 +35,8 @@ function generateOrFindUser(accessToken, refreshToken, profile, done){
 console.log(process.env.GITHUB_CLIENT_ID)
 passport.use(new GitHubStrategy({
 
-    clientID: "f6ebc3eb816bf1455837",
-    clientSecret: "bb3e2103412f6269242e72f0ed740808a42cb95e",
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
     
     callbackURL: 'http://localhost:3000/auth/github/return'
   },
@@ -44,8 +44,8 @@ passport.use(new GitHubStrategy({
 );
 
 passport.use(new FacebookStrategy({
-  clientID: "690966234357605",
-  clientSecret: "c06bd8d33da3bb73cbe6ed8461ea1e8a",
+  clientID: process.env.FACEBOOK_CLIENT_ID,
+  clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
   callbackURL: "http://localhost:3000/auth/facebook/return",
   profileFields: ['id', 'displayName', 'photos', 'email']
 },
