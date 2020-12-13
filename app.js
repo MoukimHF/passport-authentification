@@ -9,6 +9,7 @@ var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session)
 var User = require("./models/user");
 
 function generateOrFindUser(accessToken, refreshToken, profile, done){
@@ -79,7 +80,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // mongodb connection
 mongoose.connect("mongodb://localhost:27017/bookworm-oauth");
 var db = mongoose.connection;
-
+ 
 // Session Configuration for Passport and MongoDB
 var sessionOptions = {
 	secret: "this is a super secret dadada",
